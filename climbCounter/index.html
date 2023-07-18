@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>문자 개수 세기</title>
+    <script>
+        function countCharacter() {
+            var divContent = document.getElementById("instafeed").textContent; // <div> 태그 내용물 가져오기
+            //var targetSymbol = "🟣"; // 세고 싶은 특정 기호
+          
+            var black_count = (divContent.match(new RegExp("⚫️", "g")) || []).length; 
+            var brown_count = (divContent.match(new RegExp("🟤", "g")) || []).length;
+            var purple_count = (divContent.match(new RegExp("🟣", "g")) || []).length;
+            var blue_count = (divContent.match(new RegExp("🔵", "g")) || []).length;
+            var skyblue_count = (divContent.match(new RegExp("🧊", "g")) || []).length;
+
+            var result = "⚫️:" + black_count + " 🟤:" + brown_count + " 🟣:" + purple_count + " 🔵:" + blue_count + " 🧊:" + skyblue_count;
+            alert(result);
+            //console.log("문자 개수:", count);
+        }
+    </script>
+</head>
+<body>
+    <h1>등반 난이도별 개수 카운터</h1>
+    <button onclick="countCharacter()">개수 카운트</button><br><br>
+
+    <div id="instafeed"></div>
+    <script src="instafeed.min.js"></script>
+    <script>
+        var feed = new Instafeed({
+            limit : 1000,
+            template : '{{caption}}<br>',
+            accessToken: ''
+        });
+        feed.run();
+    </script>
+</body>
+</html>

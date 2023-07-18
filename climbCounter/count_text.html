@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>기호 개수 세기</title>
+</head>
+<body>
+  <div id="myDiv">
+    Lorem ipsum dolor sit 🟣 amet, consectetur adipiscing elit. Sed ac dapibus massa. 🟣 Lorem ipsum dolor 🟣 sit amet, consectetur adipiscing elit.
+  </div>
+
+  <script>
+    // 특정 기호 개수 세기 함수
+    function countSymbols() {
+      var divContent = document.getElementById("myDiv").textContent; // <div> 태그 내용물 가져오기
+      var targetSymbol = "🟣"; // 세고 싶은 특정 기호
+
+      var count = (divContent.match(new RegExp(targetSymbol, "g")) || []).length; // 기호 개수 세기
+
+      // Chrome 알림으로 결과 표시
+      alert("🟣:" + count);
+    }
+
+    // 페이지 로드 후 실행
+    //window.onload = countSymbols;
+  </script>
+</body>
+</html>

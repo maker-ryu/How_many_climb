@@ -13,8 +13,19 @@
             var blue_count = (divContent.match(new RegExp("🔵", "g")) || []).length;
             var skyblue_count = (divContent.match(new RegExp("🧊", "g")) || []).length;
 
-            var result = "⚫️:" + black_count + " 🟤:" + brown_count + " 🟣:" + purple_count + " 🔵:" + blue_count + " 🧊:" + skyblue_count;
-            alert(result);
+            //var result = "⚫️:" + black_count + " 🟤:" + brown_count + " 🟣:" + purple_count + " 🔵:" + blue_count + " 🧊:" + skyblue_count;
+            var result = "🧗‍♂️ : 2023. 01. 01 ~ ↕️177.4cm ↔️184.7cm\n" + "🌲 : @seoulforest_ttukseom\n" + "2023 : 🔵(" + blue_count + "/100)🟣(" + purple_count + "/50)🟤(" + brown_count + "/10) ⚫️(" + black_count + "/2)";
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = result;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+
+            alert(result + "\n\n 클립보드에 복사되었습니다!");
+            result.execCommand('copy');
+
             //console.log("문자 개수:", count);
         }
     </script>
@@ -22,13 +33,14 @@
 <body>
     <h1>등반 난이도별 개수 카운터</h1>
     <button onclick="countCharacter()">개수 카운트</button><br><br>
-
+    
     <div id="instafeed"></div>
     <script src="instafeed.min.js"></script>
     <script>
         var feed = new Instafeed({
             limit : 1000,
             template : '{{caption}}<br>',
+            // 개인 인스타그램 토큰은 업로드 주의!
             accessToken: ''
         });
         feed.run();
